@@ -16,7 +16,7 @@ model = dict(
         deform_ratio=1.0,
         interaction_indexes=[[0, 2], [3, 5], [6, 8], [9, 11]],
         arch='L4',
-        drop_path_rate=0.1,
+        drop_path_rate=0.2,
         out_indices=(11,),
         final_norm=False,
         init_cfg=dict(type='Pretrained', checkpoint=checkpoint_url,  prefix="backbone."),

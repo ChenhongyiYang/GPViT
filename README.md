@@ -1,6 +1,6 @@
 # GPViT: A High Resolution Non-Hierarchical Vision Transformer with Group Propagation
 <p align="center">
-<img src="resources/gpvit_release_intro.png" style="width:800px;"/>
+<img src="resources/gpvit_release_intro.png" style="width:500px;"/>
 </p>
 
 GPViT is a high-resolution non-hierarchical vision transformer architecture designed for high-performing visual recognition. This repository contains the official PyTorch implementation of our paper:
@@ -77,7 +77,7 @@ GPViT
 |-- ...
 ``` 
 
-### ImageNet classification
+### ImageNet Classification
 #### Training GPViT
 ```shell
 # Example: Training GPViT-L1 model
@@ -116,7 +116,7 @@ zsh tools/dist_test.sh configs/gpvit/mask_rcnn/gpvit_l1_maskrcnn_1x.py work_dirs
 zsh tools/dist_test.sh configs/gpvit/retinanet/gpvit_l1_retinanet_1x.py work_dirs/gpvit_l1_retinanet_1x/epoch_12.pth 16 --eval bbox
 ```
 
-### ADE20K semantic segmentation
+### ADE20K Semantic Segmentation
 #### Training GPViT based semantic segmentation models
 ```shell
 # Example: Training GPViT-L1 based SegFormer and UperNet models
@@ -135,7 +135,7 @@ zsh tools/dist_test.sh configs/gpvit/gpvit_l1_upernet.py work_dirs/gpvit_l1_uper
 ### ImageNet-1k classification
 |   Model  | #Params (M) | Top-1 Acc | Top-5 Acc |   Config   |   Model   |
 |:--------:|:-----------:|:---------:|:---------:|:----------:|:---------:|
-| GPViT-L1 |     9.3     |    80.5   |    95.4   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l1.py) | [model]() |
+| GPViT-L1 |     9.3     |    80.5   |    95.4   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l1.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l1_in1k_300e.pth) |
 | GPViT-L2 |    23.8     |    83.4   |    96.6   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l2.py) | [model]() |
 | GPViT-L3 |    36.2     |    84.1   |    96.9   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l3.py) | [model]() |
 | GPViT-L4 |    75.4     |    84.3   |    96.9   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l4.py) | [model]() |
