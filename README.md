@@ -10,7 +10,7 @@ GPViT is a high-resolution non-hierarchical vision transformer architecture desi
 ## Usage
 
 ### Environment Setup
-Our code base is built upon the MM-series toolkits. Specifically, classification is based on [MMClassification](); object detection is based on [MMDetection](); and semantic segmentation is based on [MMSegmentation](). Users can follow the official site of those toolkit to set up their environments. We also provide a sample setting up script as following:
+Our code base is built upon the MM-series toolkits. Specifically, classification is based on [MMClassification](https://github.com/open-mmlab/mmclassification/); object detection is based on [MMDetection](https://github.com/open-mmlab/mmdetection/); and semantic segmentation is based on [MMSegmentation](https://github.com/open-mmlab/mmsegmentation/). Users can follow the official site of those toolkit to set up their environments. We also provide a sample setting up script as following:
 
 ```shell
 conda create -n gpvit python=3.7 -y
@@ -28,7 +28,7 @@ pip install -v -e .
 ```
 
 ### Data Preparation
-Please follow [MMClassification](), [MMDetection]() and [MMSegmentation]() to set up the ImageNet, COCO and ADE20K datasets. For ImageNet experiment, we convert the dataset to LMDB format to accelerate training and testing. For example, you can convert you own dataset by running:
+Please follow [MMClassification](https://github.com/open-mmlab/mmclassification/), [MMDetection](https://github.com/open-mmlab/mmdetection/) and [MMSegmentation](https://github.com/open-mmlab/mmsegmentation/) to set up the ImageNet, COCO and ADE20K datasets. For ImageNet experiment, we convert the dataset to LMDB format to accelerate training and testing. For example, you can convert you own dataset by running:
 ```shell
 python tools/dataset_tools/create_lmdb_dataset.py \
        --train-img-dir data/imagenet/train \
@@ -44,24 +44,24 @@ GPViT
 |   |   |-- imagenet_lmdb
 |   |   |   |-- train
 |   |   |   |   |-- data.mdb
-|   |   |   |   |-- lock.mdb
+|   |   |   |   |__ lock.mdb
 |   |   |   |-- val
 |   |   |   |   |-- data.mdb
-|   |   |   |   |-- lock.mdb 
+|   |   |   |   |__ lock.mdb 
 |   |   |-- meta
-|   |   |   |- ...
+|   |   |   |__ ...
 |-- downstream 
 |   |-- mmsegmentation
 |   |   |-- data
 |   |   |   |-- ade
 |   |   |   |   |-- ADEChallengeData2016
 |   |   |   |   |   |-- annotations
-|   |   |   |   |   |   |-- ...
+|   |   |   |   |   |   |__ ...
 |   |   |   |   |   |-- images
-|   |   |   |   |   |   |-- ...
+|   |   |   |   |   |   |__ ...
 |   |   |   |   |   |-- objectInfo150.txt
-|   |   |   |   |   |-- sceneCategories.txt
-|   |   |-- ...
+|   |   |   |   |   |__ sceneCategories.txt
+|   |   |__ ...
 |   |-- mmdetection
 |   |   |-- data
 |   |   |   |-- coco
@@ -72,9 +72,9 @@ GPViT
 |   |   |   |   |-- annotations
 |   |   |   |   |   |-- instances_train2017.json
 |   |   |   |   |   |-- instances_val2017.json
-|   |   |   |   |   |-- ...
-|   |   |-- ...
-|-- ...
+|   |   |   |   |   |__ ...
+|   |   |__ ...
+|__ ...
 ``` 
 
 ### ImageNet Classification
@@ -89,6 +89,8 @@ zsh tool/dist_train.sh configs/gpvit/gpvit_l1.py 16
 zsh tool/dist_test.sh configs/gpvit/gpvit_l1.py work_dirs/gpvit_l1/epoch_300.pth 16 --metrics accuracy
 ```
 ### COCO Object Detection and Instance Segmentation
+
+Run `cd downstream/mmdetection` first. 
 
 #### Training GPViT based Mask R-CNN
 ```shell
@@ -116,7 +118,10 @@ zsh tools/dist_test.sh configs/gpvit/mask_rcnn/gpvit_l1_maskrcnn_1x.py work_dirs
 zsh tools/dist_test.sh configs/gpvit/retinanet/gpvit_l1_retinanet_1x.py work_dirs/gpvit_l1_retinanet_1x/epoch_12.pth 16 --eval bbox
 ```
 
+
 ### ADE20K Semantic Segmentation
+
+Run `cd downstream/mmsegmentation` first.
 #### Training GPViT based semantic segmentation models
 ```shell
 # Example: Training GPViT-L1 based SegFormer and UperNet models
@@ -136,9 +141,9 @@ zsh tools/dist_test.sh configs/gpvit/gpvit_l1_upernet.py work_dirs/gpvit_l1_uper
 |   Model  | #Params (M) | Top-1 Acc | Top-5 Acc |   Config   |   Model   |
 |:--------:|:-----------:|:---------:|:---------:|:----------:|:---------:|
 | GPViT-L1 |     9.3     |    80.5   |    95.4   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l1.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l1_in1k_300e.pth) |
-| GPViT-L2 |    23.8     |    83.4   |    96.6   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l2.py) | [model]() |
-| GPViT-L3 |    36.2     |    84.1   |    96.9   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l3.py) | [model]() |
-| GPViT-L4 |    75.4     |    84.3   |    96.9   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l4.py) | [model]() |
+| GPViT-L2 |    23.8     |    83.4   |    96.6   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l2.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l3_in1k_300e.pth) |
+| GPViT-L3 |    36.2     |    84.1   |    96.9   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l3.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l4_in1k_300e.pth) |
+| GPViT-L4 |    75.4     |    84.3   |    96.9   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l4.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l4_in1k_300e.pth) |
 
 ### COCO Mask R-CNN 1x Schedule
 |   Model  | #Params (M) | AP Box | AP Mask |   Config   |   Model   |
