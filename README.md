@@ -10,7 +10,7 @@ GPViT is a high-resolution non-hierarchical vision transformer architecture desi
 ## Usage
 
 ### Environment Setup
-Our code base is built upon the MM-series toolkits. Specifically, classification is based on [MMClassification](); object detection is based on [MMDetection](); and semantic segmentation is based on [MMSegmentation](). Users can follow the official site of those toolkit to set up their environments. We also provide a sample setting up script as following:
+Our code base is built upon the MM-series toolkits. Specifically, classification is based on [MMClassification](https://github.com/open-mmlab/mmclassification/); object detection is based on [MMDetection](https://github.com/open-mmlab/mmdetection/); and semantic segmentation is based on [MMSegmentation](https://github.com/open-mmlab/mmsegmentation/). Users can follow the official site of those toolkit to set up their environments. We also provide a sample setting up script as following:
 
 ```shell
 conda create -n gpvit python=3.7 -y
@@ -28,7 +28,7 @@ pip install -v -e .
 ```
 
 ### Data Preparation
-Please follow [MMClassification](), [MMDetection]() and [MMSegmentation]() to set up the ImageNet, COCO and ADE20K datasets. For ImageNet experiment, we convert the dataset to LMDB format to accelerate training and testing. For example, you can convert you own dataset by running:
+Please follow [MMClassification](https://github.com/open-mmlab/mmclassification/), [MMDetection](https://github.com/open-mmlab/mmdetection/) and [MMSegmentation](https://github.com/open-mmlab/mmsegmentation/) to set up the ImageNet, COCO and ADE20K datasets. For ImageNet experiment, we convert the dataset to LMDB format to accelerate training and testing. For example, you can convert you own dataset by running:
 ```shell
 python tools/dataset_tools/create_lmdb_dataset.py \
        --train-img-dir data/imagenet/train \
@@ -90,6 +90,8 @@ zsh tool/dist_test.sh configs/gpvit/gpvit_l1.py work_dirs/gpvit_l1/epoch_300.pth
 ```
 ### COCO Object Detection and Instance Segmentation
 
+Run `cd downstream/mmdetection` first. 
+
 #### Training GPViT based Mask R-CNN
 ```shell
 # Example: Training GPViT-L1 models with 1x and 3x+MS schedules
@@ -117,6 +119,9 @@ zsh tools/dist_test.sh configs/gpvit/retinanet/gpvit_l1_retinanet_1x.py work_dir
 ```
 
 ### ADE20K semantic segmentation
+
+Run `cd downstream/mmsegmentation` first. 
+
 #### Training GPViT based semantic segmentation models
 ```shell
 # Example: Training GPViT-L1 based SegFormer and UperNet models
