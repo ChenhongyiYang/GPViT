@@ -3,9 +3,9 @@
 <img src="resources/gpvit_release_intro.png" style="width:500px;"/>
 </p>
 
-GPViT is a high-resolution non-hierarchical vision transformer architecture designed for high-performing visual recognition. This repository contains the official PyTorch implementation of our paper:
+This repository contains the official PyTorch implementation of GPViT, a high-resolution non-hierarchical vision transformer architecture designed for high-performing visual recognition, which is introduced in our paper: 
 
-[GPViT: A High Resolution Non-Hierarchical Vision Transformer with Group Propagation, *Chenhongyi Yang**, *Jiarui Xu**, *Shalini De Mello*, *Elliot J. Crowley*, *Xiaolong Wang*.](TBD)
+[GPViT: A High Resolution Non-Hierarchical Vision Transformer with Group Propagation, *Chenhongyi Yang**, *Jiarui Xu**, *Shalini De Mello*, *Elliot J. Crowley*, *Xiaolong Wang*.](https://arxiv.org/pdf/2212.06795.pdf)
 
 ## Usage
 
@@ -21,9 +21,9 @@ mim install mmcv-full==1.4.8
 pip install timm
 pip install lmdb # for ImageNet experiments
 pip install -v -e .
-cd downstream/mmdetection  # setup object detection and instance segmentation
+cd downstream/mmdetection  # set up object detection and instance segmentation
 pip install -v -e . 
-cd ../mmsegmentation # setup semantic segmentation
+cd ../mmsegmentation # set up semantic segmentation
 pip install -v -e .
 ```
 
@@ -33,7 +33,7 @@ Please follow [MMClassification](https://github.com/open-mmlab/mmclassification/
 python tools/dataset_tools/create_lmdb_dataset.py \
        --train-img-dir data/imagenet/train \
        --train-out data/imagenet/imagenet_lmdb/train \
-       --val_img_dir data/imagenet/val \
+       --val-img-dir data/imagenet/val \
        --val-out data/imagenet/imagenet_lmdb/val
 ```
 After setting up, the datasets file structure should be as follows:
@@ -103,7 +103,7 @@ zsh tools/dist_train.sh configs/gpvit/mask_rcnn/gpvit_l1_maskrcnn_3x.py 16
 ```shell
 # Example: Training GPViT-L1 models with 1x and 3x+MS schedules
 zsh tools/dist_train.sh configs/gpvit/retinanet/gpvit_l1_retinanet_1x.py 16
-zsh tools/dist_train.sh configs/gpvit/retinanet/gpvit_l4_retinanet_3x.py 16
+zsh tools/dist_train.sh configs/gpvit/retinanet/gpvit_l1_retinanet_3x.py 16
 ```
 
 #### Testing GPViT based Mask R-CNN
@@ -137,7 +137,7 @@ zsh tools/dist_test.sh configs/gpvit/gpvit_l1_upernet.py work_dirs/gpvit_l1_uper
 
 ## Benchmark results
 
-### ImageNet-1k classification
+### ImageNet-1k Classification
 |   Model  | #Params (M) | Top-1 Acc | Top-5 Acc |   Config   |   Model   |
 |:--------:|:-----------:|:---------:|:---------:|:----------:|:---------:|
 | GPViT-L1 |     9.3     |    80.5   |    95.4   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l1.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l1_in1k_300e.pth) |
@@ -148,55 +148,60 @@ zsh tools/dist_test.sh configs/gpvit/gpvit_l1_upernet.py work_dirs/gpvit_l1_uper
 ### COCO Mask R-CNN 1x Schedule
 |   Model  | #Params (M) | AP Box | AP Mask |   Config   |   Model   |
 |:--------:|:-----------:|:------:|:-------:|:----------:|:---------:|
-| GPViT-L1 |      33     |  48.1  |   42.7  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l1_maskrcnn_1x.py) | [model]() |
-| GPViT-L2 |      50     |  49.9  |   43.9  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l2_maskrcnn_1x.py) | [model]() |
-| GPViT-L3 |      64     |  50.4  |   44.4  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l3_maskrcnn_1x.py) | [model]() |
-| GPViT-L4 |     109     |  51.0  |   45.0  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l4_maskrcnn_1x.py) | [model]() |
+| GPViT-L1 |      33     |  48.1  |   42.7  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l1_maskrcnn_1x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l1_maskrcnn_1x.pth) |
+| GPViT-L2 |      50     |  49.9  |   43.9  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l2_maskrcnn_1x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l2_maskrcnn_1x.pth) |
+| GPViT-L3 |      64     |  50.4  |   44.4  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l3_maskrcnn_1x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l3_maskrcnn_1x.pth) |
+| GPViT-L4 |     109     |  51.0  |   45.0  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l4_maskrcnn_1x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l4_maskrcnn_1x.pth) |
 
 ### COCO Mask R-CNN 3x+MS Schedule
 |   Model  | #Params (M) | AP Box | AP Mask |   Config   |   Model   |
 |:--------:|:-----------:|:------:|:-------:|:----------:|:---------:|
-| GPViT-L1 |      33     |  50.2  |   44.3  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l1_maskrcnn_3x.py) | [model]() |
-| GPViT-L2 |      50     |  51.4  |   45.1  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l2_maskrcnn_3x.py) | [model]() |
-| GPViT-L3 |      64     |  51.6  |   45.2  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l3_maskrcnn_3x.py) | [model]() |
-| GPViT-L4 |     109     |  52.1  |   45.7  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l4_maskrcnn_3x.py) | [model]() |
+| GPViT-L1 |      33     |  50.2  |   44.3  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l1_maskrcnn_3x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l1_maskrcnn_3x.pth) |
+| GPViT-L2 |      50     |  51.4  |   45.1  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l2_maskrcnn_3x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l2_maskrcnn_3x.pth) |
+| GPViT-L3 |      64     |  51.6  |   45.2  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l3_maskrcnn_3x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l3_maskrcnn_3x.pth) |
+| GPViT-L4 |     109     |  52.1  |   45.7  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/mask_rcnn/gpvit_l4_maskrcnn_3x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l4_maskrcnn_3x.pth) |
 
 ### COCO RetinaNet 1x Schedule
 |   Model  | #Params (M) | AP Box |   Config   |   Model   |
 |:--------:|:-----------:|:------:|:----------:|:---------:|
-| GPViT-L1 |      21     |  45.8  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l1_retinanet_1x.py) | [model]() |
-| GPViT-L2 |      37     |  48.0  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l2_retinanet_1x.py) | [model]() |
-| GPViT-L3 |      52     |  48.3  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l3_retinanet_1x.py) | [model]() |
-| GPViT-L4 |      96     |  48.7  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l4_retinanet_1x.py) | [model]() |
+| GPViT-L1 |      21     |  45.8  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l1_retinanet_1x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l1_retinanet_1x.pth) |
+| GPViT-L2 |      37     |  48.0  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l2_retinanet_1x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l2_retinanet_1x.pth) |
+| GPViT-L3 |      52     |  48.3  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l3_retinanet_1x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l3_retinanet_1x.pth) |
+| GPViT-L4 |      96     |  48.7  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l4_retinanet_1x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l4_retinanet_1x.pth) |
 
 ### COCO RetinaNet 3x+MS Schedule
 |   Model  | #Params (M) | AP Box |   Config   |   Model   |
 |:--------:|:-----------:|:------:|:----------:|:---------:|
-| GPViT-L1 |      21     |  48.1  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l1_retinanet_3x.py) | [model]() |
-| GPViT-L2 |      37     |  49.0  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l2_retinanet_3x.py) | [model]() |
-| GPViT-L3 |      52     |  49.4  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l3_retinanet_3x.py) | [model]() |
-| GPViT-L4 |      96     |  49.8  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l4_retinanet_3x.py) | [model]() |
+| GPViT-L1 |      21     |  48.1  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l1_retinanet_3x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l1_retinanet_3x.pth) |
+| GPViT-L2 |      37     |  49.0  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l2_retinanet_3x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l2_retinanet_3x.pth) |
+| GPViT-L3 |      52     |  49.4  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l3_retinanet_3x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l3_retinanet_3x.pth) |
+| GPViT-L4 |      96     |  49.8  | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmdetection/configs/gpvit/retinanet/gpvit_l4_retinanet_3x.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l4_retinanet_3x.pth) |
 
 ### ADE20K UperNet
 |   Model  | #Params (M) | mIoU |   Config   |   Model   |
 |:--------:|:-----------:|:----:|:----------:|:---------:|
-| GPViT-L1 |      37     | 49.1 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l1_upernet.py) | [model]() |
-| GPViT-L2 |      53     | 50.2 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l2_upernet.py) | [model]() |
-| GPViT-L3 |      66     | 51.7 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l3_upernet.py) | [model]() |
-| GPViT-L4 |     107     | 52.5 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l14_upernet.py) | [model]() |
+| GPViT-L1 |      37     | 49.1 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l1_upernet.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l1_upernet.pth) |
+| GPViT-L2 |      53     | 50.2 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l2_upernet.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l2_upernet.pth) |
+| GPViT-L3 |      66     | 51.7 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l3_upernet.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l3_upernet.pth) |
+| GPViT-L4 |     107     | 52.5 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l14_upernet.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l4_upernet.pth) |
 
 ### ADE20K SegFormer
 |   Model  | #Params (M) | mIoU |   Config   |   Model   |
 |:--------:|:-----------:|:----:|:----------:|:---------:|
-| GPViT-L1 |      9      | 46.9 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l1_segformer.py) | [model]() |
-| GPViT-L2 |      24     | 49.2 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l2_segformer.py) | [model]() |
-| GPViT-L3 |      36     | 50.8 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l3_segformer.py) | [model]() |
-| GPViT-L4 |      76     | 51.3 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l14_segformer.py) | [model]() |
+| GPViT-L1 |      9      | 46.9 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l1_segformer.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l1_segformer.pth) |
+| GPViT-L2 |      24     | 49.2 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l2_segformer.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l2_segformer.pth) |
+| GPViT-L3 |      36     | 50.8 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l3_segformer.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l3_segformer.pth) |
+| GPViT-L4 |      76     | 51.3 | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/downstream/mmsegmentation/configs/gpvit/gpvit_l14_segformer.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l4_segformer.pth) |
 
 
 
 ## Citation
 ```
-TBD
+@article{yang2022gpvit,
+      title={GPViT: A High Resolution Non-Hierarchical Vision Transformer with Group Propagation}, 
+      author={Chenhongyi Yang and Jiarui Xu and Shalini De Mello and Elliot J. Crowley and Xiaolong Wang},
+      journal={arXiv preprint 2212.06795}
+      year={2022},
+}
 ```
 

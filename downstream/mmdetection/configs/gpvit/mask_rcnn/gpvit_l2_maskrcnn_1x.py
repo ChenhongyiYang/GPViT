@@ -3,7 +3,7 @@ _base_ = [
     '../../_base_/schedules/schedule_1x.py',
     '../../_base_/default_runtime.py'
 ]
-checkpoint_url = ''
+checkpoint_url = 'https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l2_in1k_300e.pth'
 embed_dims = 348
 model = dict(
     type='MaskRCNN',

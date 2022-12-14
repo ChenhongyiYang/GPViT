@@ -5,7 +5,7 @@ _base_ = [
 ]
 
 backbone_channels = 624
-checkpoint_url = ''
+checkpoint_url = 'https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l4_in1k_300e.pth'
 
 norm_cfg = dict(type='SyncBN', requires_grad=True)
 model = dict(
