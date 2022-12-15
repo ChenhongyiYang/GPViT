@@ -141,7 +141,7 @@ zsh tools/dist_test.sh configs/gpvit/gpvit_l1_upernet.py work_dirs/gpvit_l1_uper
 |   Model  | #Params (M) | Top-1 Acc | Top-5 Acc |   Config   |                                              Model                                               |
 |:--------:|:-----------:|:---------:|:---------:|:----------:|:------------------------------------------------------------------------------------------------:|
 | GPViT-L1 |     9.3     |    80.5   |    95.4   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l1.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l1_in1k_300e.pth) |
-| GPViT-L2 |    23.8     |    83.4   |    96.6   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l2.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l3_in1k_300e.pth) |
+| GPViT-L2 |    23.8     |    83.4   |    96.6   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l2.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l2_in1k_300e.pth) |
 | GPViT-L3 |    36.2     |    84.1   |    96.9   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l3.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l3_in1k_300e.pth) |
 | GPViT-L4 |    75.4     |    84.3   |    96.9   | [config](https://github.com/ChenhongyiYang/GPViT/blob/main/configs/gpvit/gpvit_l4.py) | [model](https://github.com/ChenhongyiYang/GPViT/releases/download/v0.0.1/gpvit_l4_in1k_300e.pth) |
 
