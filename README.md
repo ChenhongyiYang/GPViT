@@ -5,7 +5,7 @@
 
 This repository contains the official PyTorch implementation of GPViT, a high-resolution non-hierarchical vision transformer architecture designed for high-performing visual recognition, which is introduced in our paper: 
 
-[GPViT: A High Resolution Non-Hierarchical Vision Transformer with Group Propagation, *Chenhongyi Yang**, *Jiarui Xu**, *Shalini De Mello*, *Elliot J. Crowley*, *Xiaolong Wang*.](https://arxiv.org/pdf/2212.06795.pdf)
+[GPViT: A High Resolution Non-Hierarchical Vision Transformer with Group Propagation, *Chenhongyi Yang**, *Jiarui Xu**, *Shalini De Mello*, *Elliot J. Crowley*, *Xiaolong Wang*, ICLR 2023](https://arxiv.org/pdf/2212.06795.pdf)
 
 ## Usage
 
