@@ -197,11 +197,10 @@ zsh tools/dist_test.sh configs/gpvit/gpvit_l1_upernet.py work_dirs/gpvit_l1_uper
 
 ## Citation
 ```
-@article{yang2022gpvit,
-      title={GPViT: A High Resolution Non-Hierarchical Vision Transformer with Group Propagation}, 
+@InProceedings{yang2023gpvit,
+      title={{GPViT: A High Resolution Non-Hierarchical Vision Transformer with Group Propagation}}, 
       author={Chenhongyi Yang and Jiarui Xu and Shalini De Mello and Elliot J. Crowley and Xiaolong Wang},
-      journal={arXiv preprint 2212.06795}
-      year={2022},
+      journal={ICLR}
+      year={2023},
 }
 ```
-
